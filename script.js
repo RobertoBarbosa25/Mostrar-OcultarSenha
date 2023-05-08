@@ -1,14 +1,16 @@
-function  clicou(){
-    const input = document.querySelector('input');
-    const botao = document.querySelector('.botao');
+function adicionarTarefa(event) {
+    const campoTexto = document.querySelector('input');
+    const ul = document.querySelector('ul');
 
-    if(input.getAttribute('type') === 'text'){
-        input.setAttribute('type',  'password');
-        botao.innerText = "Mostrar Senha";
-    } else{
-        input.setAttribute('type', 'text');
-        botao.innerText = "Ocultar Senha";
+    if (event.code == 'Enter') {
+        let texto = campoTexto.value;
+        let novoItem = document.createElement('li')
+        novoItem.innerText = texto;
+        ul.appendChild(novoItem);
+
+        campoTexto.value = '';
     }
-
-
 }
+
+const input = document.querySelector('input');
+input.addEventListener('keypress', adicionarTarefa);
